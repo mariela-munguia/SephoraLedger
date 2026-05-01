@@ -45,13 +45,15 @@ public class LedgerApp {
 
     private void addDeposit() {
         System.out.print("Description: ");
+        scanner.nextLine();
 
         System.out.print("Vendor: ");
+        scanner.nextLine();
 
         System.out.print("Amount: ");
+        scanner.nextLine();
 
         LocalDate.now();
-        LocalTime.now().withNano(0);
 
         repository.addTransaction();
         System.out.println("Your Deposit Has Been Saved.");
@@ -59,12 +61,20 @@ public class LedgerApp {
 
     private void makePayment() {
         System.out.print("Description: ");
+        String description = scanner.nextLine().trim();
 
         System.out.print("Vendor: ");
+        String vendor = scanner.nextLine().trim();
 
         System.out.print("Amount: ");
+        double amount = Double.parseDouble(scanner.nextLine().trim());
 
-        repository.addTransaction();
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now().withNano(0);
+
+        // Payments are stored as negative amounts
+        Transaction transaction = new Transaction(date, time, description, vendor, -amount);
+        repository.addTransaction(transaction);
         System.out.println("Your Payment Has Been Saved.");
     }
 
@@ -93,7 +103,6 @@ public class LedgerApp {
 
     private void displayDeposits() {
         List<Transaction> transactions = repository.getAllTransactions();
-
         for (Transaction transaction : transactions) {
             if (transaction.getAmount() > 0) {
                 System.out.println(transaction);
@@ -103,7 +112,6 @@ public class LedgerApp {
 
     private void displayPayments() {
         List<Transaction> transactions = repository.getAllTransactions();
-
         for (Transaction transaction : transactions) {
             if (transaction.getAmount() < 0) {
                 System.out.println(transaction);
