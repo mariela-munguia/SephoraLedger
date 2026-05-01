@@ -6,7 +6,6 @@
 ![Java](https://img.shields.io/badge/Java-26-000000?style=flat-square&labelColor=000000&color=ffffff)
 ![Maven](https://img.shields.io/badge/Maven-Build-000000?style=flat-square&labelColor=000000&color=ffffff)
 ![Status](https://img.shields.io/badge/Status-Complete-000000?style=flat-square&labelColor=000000&color=ffffff)
-![Internship](https://img.shields.io/badge/Open%20To-Internships-000000?style=flat-square&labelColor=000000&color=e8000d)
 
 **A backend accounting ledger application built in Java.**
 *Capstone Project*
