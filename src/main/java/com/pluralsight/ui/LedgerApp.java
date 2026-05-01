@@ -27,14 +27,15 @@ public class LedgerApp {
                     running = false;
                     System.out.println("Closing Sephora Ledger...");
                 }
-                default -> System.out.println("Invalid option.");
+                default -> System.out.println("Invalid option. Please try again.");
             }
         }
     }
 
     private void showHomeScreen() {
         System.out.println();
-        System.out.println("========== Sephora Ledger ==========");
+        System.out.println("==========*** Sephora Ledger ***==========");
+        System.out.println("======*** Accounting Ledger App ***========");
         System.out.println("D) Add Deposit");
         System.out.println("P) Make Payment");
         System.out.println("L) Ledger");
@@ -44,50 +45,27 @@ public class LedgerApp {
 
     private void addDeposit() {
         System.out.print("Description: ");
-        String description = scanner.nextLine();
 
         System.out.print("Vendor: ");
-        String vendor = scanner.nextLine();
 
         System.out.print("Amount: ");
-        double amount = Double.parseDouble(scanner.nextLine());
 
-        amount = Math.abs(amount);
+        LocalDate.now();
+        LocalTime.now().withNano(0);
 
-        Transaction transaction = new Transaction(
-                LocalDate.now(),
-                LocalTime.now().withNano(0),
-                description,
-                vendor,
-                amount
-        );
-
-        repository.addTransaction(transaction);
-        System.out.println("Deposit saved.");
+        repository.addTransaction();
+        System.out.println("Your Deposit Has Been Saved.");
     }
 
     private void makePayment() {
         System.out.print("Description: ");
-        String description = scanner.nextLine();
 
         System.out.print("Vendor: ");
-        String vendor = scanner.nextLine();
 
         System.out.print("Amount: ");
-        double amount = Double.parseDouble(scanner.nextLine());
 
-        amount = -Math.abs(amount);
-
-        Transaction transaction = new Transaction(
-                LocalDate.now(),
-                LocalTime.now().withNano(0),
-                description,
-                vendor,
-                amount
-        );
-
-        repository.addTransaction(transaction);
-        System.out.println("Payment saved.");
+        repository.addTransaction();
+        System.out.println("Your Payment Has Been Saved.");
     }
 
     private void showLedgerScreen() {
@@ -108,7 +86,7 @@ public class LedgerApp {
                 case "D" -> displayDeposits();
                 case "P" -> displayPayments();
                 case "H" -> inLedger = false;
-                default -> System.out.println("Invalid option.");
+                default -> System.out.println("Invalid option. Please try again.");
             }
         }
     }

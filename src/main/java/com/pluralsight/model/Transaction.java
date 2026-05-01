@@ -26,8 +26,5 @@ public class Transaction {
         return date + " | " + time + " | " + description + " | " + vendor + " | " + amount;
     }
 
-    public int toCsvString() {
-        return 0;
-    }
 }
 
