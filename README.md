@@ -8,7 +8,7 @@
 ![Status](https://img.shields.io/badge/Status-Complete-000000?style=flat-square&labelColor=000000&color=ffffff)
 
 **A backend accounting ledger application built in Java.**
-*Capstone Project*
+
 
 </div>
 
