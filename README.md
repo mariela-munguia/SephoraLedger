@@ -1,116 +1,128 @@
-# 💄 Sephora Ledger
 
-> A Java-based accounting ledger application built to track deposits and payments — developed as a backend capstone project.
+# SEPHORA LEDGER
 
----
+<div align="center">
 
-## About the Project
+![Java](https://img.shields.io/badge/Java-26-000000?style=flat-square&labelColor=000000&color=ffffff)
+![Maven](https://img.shields.io/badge/Maven-Build-000000?style=flat-square&labelColor=000000&color=ffffff)
+![Status](https://img.shields.io/badge/Status-Complete-000000?style=flat-square&labelColor=000000&color=ffffff)
+![Internship](https://img.shields.io/badge/Open%20To-Internships-000000?style=flat-square&labelColor=000000&color=e8000d)
 
-**Sephora Ledger** is a command-line accounting application written in Java that allows users to manage financial transactions. Users can log deposits and payments, view a full ledger history all persisted to a local CSV file.
+**A backend accounting ledger application built in Java.**
+*Capstone Project*
 
-This project was built to demonstrate core backend development skills including file I/O, object-orientation, and clean application architecture.
-
----
-
-## Features
-
-- ✅ Add deposits and payments with description, vendor, and amount
-- ✅ Persistent storage via CSV file — data survives app restarts
-- ✅ Filter by deposits or payments
-- ✅ Built-in financial reports:
-  - Month to Date
-  - Previous Month
-  - Year to Date
-  - Previous Year
+</div>
 
 ---
 
-## Tech Stack
+## OVERVIEW
 
-| Layer | Technology |
+Sephora Ledger is a command-line financial tracking application that allows users to log deposits and payments, view transaction history. All data is persisted to a local CSV file, ensuring transactions are retained between sessions.
+
+This project demonstrates core backend engineering competencies including file I/O, object-oriented programming, layered architecture, and data filtering using Java Streams.
+
+---
+
+## FEATURES
+
+| Feature | Description |
+|---|---|
+| Add Deposit | Log income with description, vendor, and amount |
+| Make Payment | Record expenses stored as negative values |
+| Ledger View | Display all transactions sorted newest-first |
+| Persistence | All data saved to `transactions.csv` |
+
+
+---
+
+## ARCHITECTURE
+
+```
+SephoraLedger/
+├── src/main/java/com/pluralsight/
+│   ├── Main.java                          # Entry point
+│   ├── ui/
+│   │   └── LedgerApp.java                # Menu navigation & user input
+│   ├── service/
+│   │   └── TransactionFileRepository.java # CSV read/write logic
+│   └── model/
+│       └── Transaction.java              # Transaction data model
+├── transactions.csv                       # Persistent data store
+└── pom.xml
+```
+
+**Design Pattern:** Three-layer architecture separating UI, business logic, and data access.
+
+---
+
+## TECH STACK
+
+| | |
 |---|---|
 | Language | Java 26 |
 | Build Tool | Maven |
-| Storage | CSV flat file |
-| Architecture | Layered (UI / Service / Model) |
+| Data Storage | CSV flat file |
+| File I/O | BufferedReader / BufferedWriter |
+| Date & Time | java.time (LocalDate, LocalTime) |
 | IDE | IntelliJ IDEA |
 
 ---
 
-## Project Structure
+
+## APPLICATION PREVIEW
 
 ```
-SephoraLedger/
-├── src/
-│   └── main/
-│       └── java/
-│           └── com/pluralsight/
-│               ├── Main.java
-│               ├── model/
-│               │   └── Transaction.java
-│               ├── service/
-│               │   └── TransactionFileRepository.java
-│               └── ui/
-│                   └── LedgerApp.java
-├── transactions.csv
-└── pom.xml
-```
+💄 =============================== 💄
+        ✨ SEPHORA LEDGER ✨
+      💰 Accounting Ledger App 💰
+💄 =============================== 💄
 
----
+  💵  D) Add Deposit
+  💸  P) Make Payment
+  📒  L) Ledger
+  🚪  X) Exit
 
-### Prerequisites
+👉 Choose an option: D
 
-- Java 17 or higher
-- Maven (or run directly in IntelliJ)
-
----
-
-## How to Use
-
-```
-==========*** Sephora Ledger ***==========
-======*** Accounting Ledger App ***========
-D) Add Deposit
-P) Make Payment
-L) Ledger
-X) Exit
-Choose an option:
-```
-
-**Adding a Deposit:**
-```
-Description: Brand Sponsorship Payment
+Description: Brand Sponsorship
 Vendor: Fenty Beauty
 Amount: 500.00
-Your Deposit Has Been Saved.
-```
-
-**Viewing the Ledger:**
-```
-A) All
-D) Deposits
-P) Payments
-R) Reports
-H) Home
+✅ Your Deposit Has Been Saved! 💵
 ```
 
 ---
 
-## CSV Format
+## DATA FORMAT
 
-Transactions are stored in `transactions.csv` with the following format:
+Transactions are stored in pipe-delimited format:
 
 ```
-date|time|description|vendor|amount
 2026-05-01|10:30:00|Brand Sponsorship|Fenty Beauty|500.00
 2026-05-01|11:00:00|Lipstick Collection|Charlotte Tilbury|-89.00
 ```
 
-Deposits are stored as **positive** values. Payments are stored as **negative** values.
+> Deposits are positive values. Payments are negative values.
 
 ---
 
-## Acknowledgements
+## Thought Process 
 
-Built as a capstone project for the **Year Up / Pluralsight** backend Java program.  
+**Why CSV over a database?**
+Flat file storage keeps the application dependency-free and portable. The pipe delimiter avoids conflicts with commas in transaction descriptions.
+
+**Why negative values for payments?**
+Storing payments as negative amounts allows a single `getAllTransactions()` method to power all views — deposits, payments, and reports — using a single stream filter on the amount field.
+
+---
+
+## FUTURE IMPROVEMENTS
+
+- [ ] Replace CSV with PostgreSQL database
+- [ ] Add user authentication and multi-account support
+- [ ] Build a REST API layer using Spring Boot
+- [ ] Create a web-based front end
+
+---
+
+</div>Built as a capstone project.  
 Inspired by a love of beauty, business, and clean code. 💋
