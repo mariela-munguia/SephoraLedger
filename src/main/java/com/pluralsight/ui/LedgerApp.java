@@ -80,7 +80,7 @@ public class LedgerApp {
 
         Transaction transaction = new Transaction(date, time, description, vendor, -amount);
         repository.addTransaction(transaction);
-        System.out.println("Your Payment Has Been Saved.");
+        System.out.println("Your Payment Has Been Saved...");
     }
 
     private void showLedgerScreen() {
@@ -104,7 +104,7 @@ public class LedgerApp {
                 case "P" -> displayPayments();
                 case "R" -> showReportsScreen();
                 case "H" -> inLedger = false;
-                default -> System.out.println("Invalid option. Please try again.");
+                default -> System.out.println("Invalid option. Please try again...");
             }
         }
     }
