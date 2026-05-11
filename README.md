@@ -88,7 +88,11 @@ Vendor: Fenty Beauty
 Amount: 500.00
 ✅ Your Deposit Has Been Saved! 💵
 ```
+## Project Demo
 
+Here is a short walkthrough of how my app works:
+[
+](https://github.com/mariela-munguia/SephoraLedger/issues/1#issue-4424268412)
 ---
 
 ## DATA FORMAT
